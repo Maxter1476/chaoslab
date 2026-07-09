@@ -63,7 +63,3 @@ python examples/divergence.py     # three near-identical starts diverging
 pytest -q     # 13 tests, incl. the analytic normal-mode + Lyapunov validations
 ruff check .
 ```
-
-## License
-
-MIT
