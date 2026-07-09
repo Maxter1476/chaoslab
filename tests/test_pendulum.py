@@ -67,7 +67,10 @@ def test_lyapunov_positive_when_chaotic():
     dp = DoublePendulum()
     state0 = np.array([np.pi / 2, np.pi / 2, 0.0, 0.0])
     lam = largest_lyapunov(dp, state0, n_renorm=3000)
-    assert lam > 1.0  # well above numerical noise, in 1/s
+    # The exponent for this energy is ~1 s^-1; assert a threshold that is
+    # unambiguously positive yet robust to platform BLAS differences, and
+    # that cleanly separates it from the regular case (which gives < 0.2).
+    assert lam > 0.5
 
 
 def test_lyapunov_near_zero_when_regular():
